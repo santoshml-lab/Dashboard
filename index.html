@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ExamPanic AI Dashboard 🚀</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left,#38bdf830,transparent 25%),
+radial-gradient(circle at bottom right,#6366f130,transparent 25%),
+#020617;
+
+color:white;
+min-height:100vh;
+}
+
+/* TOP BAR */
+
+.topbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 8%;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+
+font-size:26px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.user{
+
+background:#111827;
+padding:10px 16px;
+border-radius:12px;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+
+padding:40px 8%;
+
+}
+
+.hero h1{
+
+font-size:48px;
+line-height:1.3;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.hero p{
+margin-top:12px;
+opacity:0.8;
+}
+
+/* GRID */
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+
+padding:0 8%;
+margin-top:25px;
+}
+
+/* CARD */
+
+.card{
+
+background:rgba(255,255,255,0.05);
+
+padding:22px;
+
+border-radius:22px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(20px);
+
+transition:0.3s;
+
+cursor:pointer;
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 30px rgba(56,189,248,0.2);
+}
+
+.card h2{
+
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.card p{
+opacity:0.8;
+font-size:14px;
+line-height:1.6;
+}
+
+/* STATS */
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+
+padding:0 8%;
+margin-top:30px;
+}
+
+.stat{
+
+background:rgba(255,255,255,0.05);
+
+padding:20px;
+
+border-radius:18px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.stat h3{
+
+font-size:28px;
+color:#38bdf8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:32px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+<div class="logo">🚀 ExamPanic AI</div>
+
+<div class="user">
+👤 Student Dashboard
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>
+Welcome to <span>Smart Learning Dashboard</span> ⚡
+</h1>
+
+<p>
+AI-powered EdTech system for Class 1–10 students with Notes, MCQ, Chat & Prediction.
+</p>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<h3>AI</h3>
+<p>Teacher Engine</p>
+</div>
+
+<div class="stat">
+<h3>ML</h3>
+<p>Prediction System</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>Learning Support</p>
+</div>
+
+</div>
+
+<!-- MODULES -->
+
+<div class="grid">
+
+<div class="card" onclick="go('learn.html')">
+<h2>📘 Learn</h2>
+<p>AI teacher explains chapters in simple way.</p>
+</div>
+
+<div class="card" onclick="go('notes.html')">
+<h2>📝 Notes</h2>
+<p>Class-wise exam ready notes generator.</p>
+</div>
+
+<div class="card" onclick="go('mcq.html')">
+<h2>🧠 MCQ Test</h2>
+<p>Smart test system with instant evaluation.</p>
+</div>
+
+<div class="card" onclick="go('predict.html')">
+<h2>🎯 Prediction</h2>
+<p>ML model predicts exam performance.</p>
+</div>
+
+<div class="card" onclick="go('chat.html')">
+<h2>💬 AI Chat</h2>
+<p>Doubt solving AI tutor anytime.</p>
+</div>
+
+</div>
+
+<script>
+
+function go(page){
+window.location.href = page;
+}
+
+</script>
+
+</body>
+</html>

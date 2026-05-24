@@ -10,6 +10,7 @@
 
 <style>
 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -26,33 +27,49 @@ radial-gradient(circle at bottom right,#6366f130,transparent 25%),
 
 color:white;
 min-height:100vh;
+overflow-x:hidden;
+}
+
+/* ✨ BACKGROUND GLOW */
+body::before{
+content:"";
+position:fixed;
+width:300px;
+height:300px;
+background:#38bdf8;
+filter:blur(120px);
+top:10%;
+left:10%;
+opacity:0.15;
+animation:move 6s infinite alternate;
+z-index:-1;
+}
+
+@keyframes move{
+from{transform:translate(0,0);}
+to{transform:translate(120px,80px);}
 }
 
 /* TOP BAR */
-
 .topbar{
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 padding:20px 8%;
-
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(20px);
-
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
+/* LOGO */
 .logo{
-
 font-size:26px;
 font-weight:700;
 color:#38bdf8;
 }
 
+/* USER */
 .user{
-
 background:#111827;
 padding:10px 16px;
 border-radius:12px;
@@ -60,17 +77,14 @@ font-size:14px;
 }
 
 /* HERO */
-
 .hero{
-
 padding:40px 8%;
-
 }
 
 .hero h1{
-
 font-size:48px;
 line-height:1.3;
+animation:fadeDown 0.8s ease;
 }
 
 .hero span{
@@ -82,46 +96,71 @@ margin-top:12px;
 opacity:0.8;
 }
 
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+padding:0 8%;
+margin-top:30px;
+}
+
+/* STAT BOX */
+.stat{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+animation:fadeUp 0.6s ease forwards;
+opacity:0;
+}
+
+.stat:nth-child(1){animation-delay:0.1s;}
+.stat:nth-child(2){animation-delay:0.2s;}
+.stat:nth-child(3){animation-delay:0.3s;}
+
+.stat h3{
+font-size:28px;
+color:#38bdf8;
+}
+
 /* GRID */
-
 .grid{
-
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-
 padding:0 8%;
 margin-top:25px;
 }
 
 /* CARD */
-
 .card{
-
 background:rgba(255,255,255,0.05);
-
 padding:22px;
-
 border-radius:22px;
-
 border:1px solid rgba(255,255,255,0.08);
-
 backdrop-filter:blur(20px);
-
+cursor:pointer;
 transition:0.3s;
 
-cursor:pointer;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 0.7s ease forwards;
 }
 
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.3s;}
+.card:nth-child(3){animation-delay:0.4s;}
+.card:nth-child(4){animation-delay:0.5s;}
+.card:nth-child(5){animation-delay:0.6s;}
+
 .card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 0 30px rgba(56,189,248,0.2);
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 40px rgba(56,189,248,0.25);
 }
 
 .card h2{
-
 color:#38bdf8;
 margin-bottom:10px;
 }
@@ -132,39 +171,26 @@ font-size:14px;
 line-height:1.6;
 }
 
-/* STATS */
-
-.stats{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-
-padding:0 8%;
-margin-top:30px;
+/* ANIMATIONS */
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-.stat{
-
-background:rgba(255,255,255,0.05);
-
-padding:20px;
-
-border-radius:18px;
-
-text-align:center;
-
-border:1px solid rgba(255,255,255,0.08);
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-20px);
 }
-
-.stat h3{
-
-font-size:28px;
-color:#38bdf8;
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* MOBILE */
-
 @media(max-width:900px){
 
 .hero h1{
@@ -184,31 +210,21 @@ grid-template-columns:1fr;
 
 <!-- TOP BAR -->
 <div class="topbar">
-
 <div class="logo">🚀 ExamPanic AI</div>
-
-<div class="user">
-👤 Student Dashboard
-</div>
-
+<div class="user">👤 Student Dashboard</div>
 </div>
 
 <!-- HERO -->
-
 <div class="hero">
-
 <h1>
 Welcome to <span>Smart Learning Dashboard</span> ⚡
 </h1>
-
 <p>
 AI-powered EdTech system for Class 1–10 students with Notes, MCQ, Chat & Prediction.
 </p>
-
 </div>
 
 <!-- STATS -->
-
 <div class="stats">
 
 <div class="stat">
@@ -229,74 +245,39 @@ AI-powered EdTech system for Class 1–10 students with Notes, MCQ, Chat & Predi
 </div>
 
 <!-- MODULES -->
-
 <div class="grid">
 
-<div class="card"
-onclick="go('https://learnlession.santoshkrsbg36.workers.dev')">
-
+<div class="card" onclick="go('https://learnlession.santoshkrsbg36.workers.dev')">
 <h2>📘 Learn</h2>
-
-<p>
-AI teacher explains chapters in simple way.
-</p>
-
+<p>AI teacher explains chapters in simple way.</p>
 </div>
 
-<div class="card"
-onclick="go('https://studentnotes.santoshkrsbg36.workers.dev/')">
-
+<div class="card" onclick="go('https://studentnotes.santoshkrsbg36.workers.dev/')">
 <h2>📝 Notes</h2>
-
-<p>
-Class-wise exam ready notes generator.
-</p>
-
+<p>Class-wise exam ready notes generator.</p>
 </div>
 
-<div class="card"
-onclick="go('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
-
+<div class="card" onclick="go('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
 <h2>🧠 MCQ Test</h2>
-
-<p>
-Smart test system with instant evaluation.
-</p>
-
+<p>Smart test system with instant evaluation.</p>
 </div>
 
-<div class="card"
-onclick="go('predict.html')">
-
+<div class="card" onclick="go('predict.html')">
 <h2>🎯 Prediction</h2>
-
-<p>
-ML model predicts exam performance.
-</p>
-
+<p>ML model predicts exam performance.</p>
 </div>
 
-<div class="card"
-onclick="go('https://chatstudent.santoshkrsbg36.workers.dev/')">
-
+<div class="card" onclick="go('https://chatstudent.santoshkrsbg36.workers.dev/')">
 <h2>💬 AI Chat</h2>
-
-<p>
-Doubt solving AI tutor anytime.
-</p>
-
+<p>Doubt solving AI tutor anytime.</p>
 </div>
 
 </div>
 
 <script>
-
 function go(page){
-
 window.location.href = page;
-
 }
-
 </script>
 
 </body>

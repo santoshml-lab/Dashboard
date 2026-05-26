@@ -20,139 +20,142 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:
-radial-gradient(circle at top left,#38bdf830,transparent 25%),
-radial-gradient(circle at bottom right,#8b5cf630,transparent 25%),
-#020617;
-color:white;
 min-height:100vh;
+background:
+linear-gradient(135deg,#0ea5e9,#8b5cf6,#22c55e);
+background-size:400% 400%;
+animation:gradient 10s ease infinite;
+color:white;
 overflow-x:hidden;
 }
 
-/* GLASS TOPBAR */
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* TOPBAR */
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
-background:rgba(255,255,255,0.05);
+padding:18px 8%;
+background:rgba(0,0,0,0.25);
 backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(255,255,255,0.08);
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-font-size:28px;
+font-size:26px;
 font-weight:700;
-color:#38bdf8;
 letter-spacing:1px;
 }
 
 .tag{
-background:#111827;
-padding:8px 14px;
+padding:6px 14px;
 border-radius:999px;
-font-size:13px;
-opacity:0.8;
+background:rgba(255,255,255,0.15);
+font-size:12px;
 }
 
 /* HERO */
 .hero{
 text-align:center;
-padding:45px 8%;
+padding:55px 8%;
 }
 
 .hero h1{
-font-size:50px;
+font-size:48px;
 line-height:1.2;
+text-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 .hero span{
-color:#38bdf8;
+color:#000;
+background:rgba(255,255,255,0.7);
+padding:0 10px;
+border-radius:8px;
 }
 
 .hero p{
 margin-top:10px;
-opacity:0.8;
-font-size:15px;
+opacity:0.9;
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:22px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
 padding:0 8%;
 margin-top:30px;
 }
 
 /* CARD */
 .card{
-background:rgba(255,255,255,0.05);
-padding:25px;
+background:rgba(255,255,255,0.12);
+border:1px solid rgba(255,255,255,0.2);
+backdrop-filter:blur(18px);
+padding:22px;
 border-radius:22px;
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
 cursor:pointer;
-transition:0.3s;
-box-shadow:0 0 20px rgba(56,189,248,0.08);
+transition:0.4s;
 position:relative;
 overflow:hidden;
 }
 
-/* glow effect */
+/* glowing edge */
 .card::before{
 content:"";
 position:absolute;
 width:120px;
 height:120px;
-background:#38bdf8;
-filter:blur(60px);
-top:-40px;
-right:-40px;
-opacity:0.15;
-transition:0.3s;
+background:white;
+opacity:0.1;
+filter:blur(40px);
+top:-30px;
+right:-30px;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 50px rgba(56,189,248,0.25);
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
 }
 
 .card h2{
-color:#38bdf8;
+font-size:18px;
 margin-bottom:8px;
-font-size:20px;
 }
 
 .card p{
-opacity:0.8;
-font-size:14px;
+font-size:13px;
+opacity:0.9;
 line-height:1.5;
 }
 
-/* BADGE */
+/* BUTTON STYLE BADGE */
 .badge{
 display:inline-block;
 margin-top:12px;
 padding:6px 12px;
 border-radius:999px;
-background:#111827;
+background:rgba(0,0,0,0.3);
 font-size:12px;
-opacity:0.8;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:30px;
-margin-top:20px;
-opacity:0.6;
-font-size:13px;
+padding:25px;
+margin-top:30px;
+font-size:12px;
+opacity:0.8;
 }
 
 /* MOBILE */
 @media(max-width:900px){
-.hero h1{font-size:34px;}
+.hero h1{font-size:32px;}
 }
 
 </style>
@@ -163,16 +166,16 @@ font-size:13px;
 
 <!-- TOPBAR -->
 <div class="topbar">
-<div class="logo">🚀 ExamPanic AI SaaS</div>
-<div class="tag">24×7 Learning System</div>
+<div class="logo">🚀 ExamPanic AI</div>
+<div class="tag">SaaS EdTech Platform</div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
 <h1>
-Welcome to <span>AI Powered Learning SaaS</span> ⚡
+Welcome to <span>AI Learning System</span> ⚡
 </h1>
-<p>Learn • Practice • Test • Predict — All in one system</p>
+<p>Learn • Practice • Test • Predict — All in one platform</p>
 </div>
 
 <!-- GRID -->
@@ -180,13 +183,13 @@ Welcome to <span>AI Powered Learning SaaS</span> ⚡
 
 <div class="card" onclick="openLink('https://learnlession.santoshkrsbg36.workers.dev/')">
 <h2>📘 Learn AI Teacher</h2>
-<p>Deep concept learning with AI explanation like textbook.</p>
+<p>Deep concept explanation like a real teacher.</p>
 <div class="badge">Start Learning</div>
 </div>
 
 <div class="card" onclick="openLink('https://studentnotes.santoshkrsbg36.workers.dev/')">
-<h2>📝 Smart Notes Generator</h2>
-<p>ICSE exam-ready detailed revision notes.</p>
+<h2>📝 Notes Generator</h2>
+<p>Detailed ICSE revision notes instantly.</p>
 <div class="badge">Generate Notes</div>
 </div>
 
@@ -198,13 +201,13 @@ Welcome to <span>AI Powered Learning SaaS</span> ⚡
 
 <div class="card" onclick="openLink('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
 <h2>🧠 MCQ Test Engine</h2>
-<p>Auto generated test with instant evaluation.</p>
+<p>Auto test + instant evaluation system.</p>
 <div class="badge">Test Yourself</div>
 </div>
 
 <div class="card" onclick="openLink('https://studentscoreprediction.santoshkrsbg36.workers.dev/')">
 <h2>🎯 ML Prediction</h2>
-<p>Predict your exam score using AI model.</p>
+<p>Predict exam performance using AI model.</p>
 <div class="badge">AI Analytics</div>
 </div>
 
@@ -212,15 +215,13 @@ Welcome to <span>AI Powered Learning SaaS</span> ⚡
 
 <!-- FOOTER -->
 <footer>
-Made with ❤️ by ExamPanic AI • SaaS EdTech System
+Made with ❤️ • ExamPanic AI SaaS EdTech System
 </footer>
 
 <script>
-
 function openLink(url){
 window.open(url, "_blank");
 }
-
 </script>
 
 </body>

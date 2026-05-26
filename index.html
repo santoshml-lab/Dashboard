@@ -21,14 +21,13 @@ font-family:'Poppins',sans-serif;
 body{
 background:
 radial-gradient(circle at top left,#38bdf830,transparent 25%),
-radial-gradient(circle at bottom right,#6366f130,transparent 25%),
+radial-gradient(circle at bottom right,#8b5cf630,transparent 25%),
 #020617;
 color:white;
 min-height:100vh;
-overflow-x:hidden;
 }
 
-/* TOP BAR */
+/* HEADER */
 .topbar{
 display:flex;
 justify-content:space-between;
@@ -45,29 +44,18 @@ font-weight:700;
 color:#38bdf8;
 }
 
-.user{
-background:#111827;
-padding:10px 16px;
-border-radius:12px;
-font-size:14px;
-}
-
 /* HERO */
 .hero{
 padding:40px 8%;
+text-align:center;
 }
 
 .hero h1{
-font-size:44px;
+font-size:46px;
 }
 
 .hero span{
 color:#38bdf8;
-}
-
-.hero p{
-margin-top:12px;
-opacity:0.8;
 }
 
 /* GRID */
@@ -79,7 +67,7 @@ padding:0 8%;
 margin-top:25px;
 }
 
-/* CARD */
+/* GLASS CARD */
 .card{
 background:rgba(255,255,255,0.05);
 padding:22px;
@@ -103,35 +91,55 @@ margin-bottom:10px;
 .card p{
 opacity:0.8;
 font-size:14px;
-line-height:1.6;
 }
 
-/* ML BOX */
-.ml-box{
-margin-top:10px;
+/* ML POPUP */
+.overlay{
 display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(8px);
+justify-content:center;
+align-items:center;
+}
+
+.ml-box{
+width:350px;
+padding:20px;
+border-radius:20px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 0 40px rgba(56,189,248,0.3);
 }
 
 input{
 width:100%;
 padding:10px;
-margin-top:8px;
-border-radius:10px;
+margin-top:10px;
 border:none;
+border-radius:10px;
 background:#111827;
 color:white;
 }
 
 button{
 width:100%;
-margin-top:10px;
-padding:10px;
+padding:12px;
+margin-top:12px;
 border:none;
 border-radius:10px;
-background:linear-gradient(45deg,#38bdf8,#6366f1);
+background:linear-gradient(45deg,#38bdf8,#8b5cf6);
 color:white;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
+}
+
+.close{
+background:red;
 }
 
 .result{
@@ -149,31 +157,42 @@ font-size:14px;
 
 <div class="topbar">
 <div class="logo">🚀 ExamPanic AI</div>
-<div class="user">👤 Student Dashboard</div>
 </div>
 
 <div class="hero">
 <h1>Smart <span>Learning Dashboard</span> ⚡</h1>
-<p>AI + ML powered education system</p>
 </div>
 
 <div class="grid">
 
-<div class="card" onclick="go('https://learnlession.santoshkrsbg36.workers.dev')">
+<div class="card">
 <h2>📘 Learn</h2>
 <p>AI teacher explains chapters deeply.</p>
 </div>
 
-<div class="card" onclick="go('https://studentnotes.santoshkrsbg36.workers.dev/')">
+<div class="card">
 <h2>📝 Notes</h2>
 <p>Exam ready notes generator.</p>
 </div>
 
-<div class="card">
+<div class="card" onclick="openML()">
 <h2>🎯 ML Prediction</h2>
-<p>Predict your exam score instantly</p>
+<p>Click to predict exam score</p>
+</div>
 
-<div class="ml-box" id="mlbox">
+<div class="card">
+<h2>💬 AI Chat</h2>
+<p>Doubt solving AI tutor</p>
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="overlay" id="overlay">
+
+<div class="ml-box">
+
+<h3>📊 ML Prediction</h3>
 
 <input id="chap" placeholder="Chapters Done">
 <input id="rev" placeholder="Revision Count">
@@ -181,23 +200,10 @@ font-size:14px;
 <input id="test" placeholder="Test Score %">
 
 <button onclick="predict()">Predict</button>
+<button class="close" onclick="closeML()">Close</button>
 
 <div class="result" id="result">Result will appear here</div>
 
-</div>
-
-<button onclick="toggleML()">Open Predictor</button>
-
-</div>
-
-<div class="card" onclick="go('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
-<h2>🧠 MCQ Test</h2>
-<p>Smart test system with evaluation.</p>
-</div>
-
-<div class="card" onclick="go('https://chatstudent.santoshkrsbg36.workers.dev/')">
-<h2>💬 AI Chat</h2>
-<p>Doubt solving AI tutor</p>
 </div>
 
 </div>
@@ -206,13 +212,12 @@ font-size:14px;
 
 const API = "https://studentscoreprediction.santoshkrsbg36.workers.dev/";
 
-function go(url){
-window.location.href = url;
+function openML(){
+document.getElementById("overlay").style.display="flex";
 }
 
-function toggleML(){
-let box = document.getElementById("mlbox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+function closeML(){
+document.getElementById("overlay").style.display="none";
 }
 
 async function predict(){
@@ -227,7 +232,7 @@ alert("Fill all fields");
 return;
 }
 
-document.getElementById("result").innerHTML = "Predicting...";
+document.getElementById("result").innerHTML="Predicting...";
 
 try{
 
@@ -248,7 +253,7 @@ document.getElementById("result").innerHTML =
 `📊 Score: <b>${data.predicted_marks}%</b><br>⚡ ${data.performance}`;
 
 }catch(e){
-document.getElementById("result").innerHTML = "Error in API";
+document.getElementById("result").innerHTML="Error in API";
 }
 
 }

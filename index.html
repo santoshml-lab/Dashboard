@@ -19,35 +19,13 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-
 background:
 radial-gradient(circle at top left,#38bdf830,transparent 25%),
 radial-gradient(circle at bottom right,#6366f130,transparent 25%),
 #020617;
-
 color:white;
 min-height:100vh;
 overflow-x:hidden;
-}
-
-/* ✨ BACKGROUND GLOW */
-body::before{
-content:"";
-position:fixed;
-width:300px;
-height:300px;
-background:#38bdf8;
-filter:blur(120px);
-top:10%;
-left:10%;
-opacity:0.15;
-animation:move 6s infinite alternate;
-z-index:-1;
-}
-
-@keyframes move{
-from{transform:translate(0,0);}
-to{transform:translate(120px,80px);}
 }
 
 /* TOP BAR */
@@ -61,14 +39,12 @@ backdrop-filter:blur(20px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* LOGO */
 .logo{
 font-size:26px;
 font-weight:700;
 color:#38bdf8;
 }
 
-/* USER */
 .user{
 background:#111827;
 padding:10px 16px;
@@ -82,9 +58,7 @@ padding:40px 8%;
 }
 
 .hero h1{
-font-size:48px;
-line-height:1.3;
-animation:fadeDown 0.8s ease;
+font-size:44px;
 }
 
 .hero span{
@@ -96,39 +70,10 @@ margin-top:12px;
 opacity:0.8;
 }
 
-/* STATS */
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-padding:0 8%;
-margin-top:30px;
-}
-
-/* STAT BOX */
-.stat{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:18px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.08);
-animation:fadeUp 0.6s ease forwards;
-opacity:0;
-}
-
-.stat:nth-child(1){animation-delay:0.1s;}
-.stat:nth-child(2){animation-delay:0.2s;}
-.stat:nth-child(3){animation-delay:0.3s;}
-
-.stat h3{
-font-size:28px;
-color:#38bdf8;
-}
-
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 padding:0 8%;
 margin-top:25px;
@@ -143,17 +88,7 @@ border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
 cursor:pointer;
 transition:0.3s;
-
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 0.7s ease forwards;
 }
-
-.card:nth-child(1){animation-delay:0.2s;}
-.card:nth-child(2){animation-delay:0.3s;}
-.card:nth-child(3){animation-delay:0.4s;}
-.card:nth-child(4){animation-delay:0.5s;}
-.card:nth-child(5){animation-delay:0.6s;}
 
 .card:hover{
 transform:translateY(-10px) scale(1.03);
@@ -171,36 +106,40 @@ font-size:14px;
 line-height:1.6;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
+/* ML BOX */
+.ml-box{
+margin-top:10px;
+display:none;
 }
 
-@keyframes fadeDown{
-from{
-opacity:0;
-transform:translateY(-20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* MOBILE */
-@media(max-width:900px){
-
-.hero h1{
-font-size:32px;
+input{
+width:100%;
+padding:10px;
+margin-top:8px;
+border-radius:10px;
+border:none;
+background:#111827;
+color:white;
 }
 
-.stats{
-grid-template-columns:1fr;
+button{
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#38bdf8,#6366f1);
+color:white;
+font-weight:600;
+cursor:pointer;
 }
 
+.result{
+margin-top:10px;
+padding:10px;
+background:#111827;
+border-radius:10px;
+font-size:14px;
 }
 
 </style>
@@ -208,76 +147,112 @@ grid-template-columns:1fr;
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
 <div class="logo">🚀 ExamPanic AI</div>
 <div class="user">👤 Student Dashboard</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-<h1>
-Welcome to <span>Smart Learning Dashboard</span> ⚡
-</h1>
-<p>
-AI-powered EdTech system for Class 1–10 students with Notes, MCQ, Chat & Prediction.
-</p>
+<h1>Smart <span>Learning Dashboard</span> ⚡</h1>
+<p>AI + ML powered education system</p>
 </div>
 
-<!-- STATS -->
-<div class="stats">
-
-<div class="stat">
-<h3>AI</h3>
-<p>Teacher Engine</p>
-</div>
-
-<div class="stat">
-<h3>ML</h3>
-<p>Prediction System</p>
-</div>
-
-<div class="stat">
-<h3>24/7</h3>
-<p>Learning Support</p>
-</div>
-
-</div>
-
-<!-- MODULES -->
 <div class="grid">
 
 <div class="card" onclick="go('https://learnlession.santoshkrsbg36.workers.dev')">
 <h2>📘 Learn</h2>
-<p>AI teacher explains chapters in simple way.</p>
+<p>AI teacher explains chapters deeply.</p>
 </div>
 
 <div class="card" onclick="go('https://studentnotes.santoshkrsbg36.workers.dev/')">
 <h2>📝 Notes</h2>
-<p>Class-wise exam ready notes generator.</p>
+<p>Exam ready notes generator.</p>
+</div>
+
+<div class="card">
+<h2>🎯 ML Prediction</h2>
+<p>Predict your exam score instantly</p>
+
+<div class="ml-box" id="mlbox">
+
+<input id="chap" placeholder="Chapters Done">
+<input id="rev" placeholder="Revision Count">
+<input id="att" placeholder="Attendance %">
+<input id="test" placeholder="Test Score %">
+
+<button onclick="predict()">Predict</button>
+
+<div class="result" id="result">Result will appear here</div>
+
+</div>
+
+<button onclick="toggleML()">Open Predictor</button>
+
 </div>
 
 <div class="card" onclick="go('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
 <h2>🧠 MCQ Test</h2>
-<p>Smart test system with instant evaluation.</p>
-</div>
-
-<div class="card" onclick="go('predict.html')">
-<h2>🎯 Prediction</h2>
-<p>ML model predicts exam performance.</p>
+<p>Smart test system with evaluation.</p>
 </div>
 
 <div class="card" onclick="go('https://chatstudent.santoshkrsbg36.workers.dev/')">
 <h2>💬 AI Chat</h2>
-<p>Doubt solving AI tutor anytime.</p>
+<p>Doubt solving AI tutor</p>
 </div>
 
 </div>
 
 <script>
-function go(page){
-window.location.href = page;
+
+const API = "https://studentscoreprediction.santoshkrsbg36.workers.dev/";
+
+function go(url){
+window.location.href = url;
 }
+
+function toggleML(){
+let box = document.getElementById("mlbox");
+box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+async function predict(){
+
+let chapters = document.getElementById("chap").value;
+let revision = document.getElementById("rev").value;
+let attendance = document.getElementById("att").value;
+let test = document.getElementById("test").value;
+
+if(!chapters || !revision || !attendance || !test){
+alert("Fill all fields");
+return;
+}
+
+document.getElementById("result").innerHTML = "Predicting...";
+
+try{
+
+let res = await fetch(API,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+chapters_done:Number(chapters),
+revision_count:Number(revision),
+attendance:Number(attendance),
+test_score:Number(test)
+})
+});
+
+let data = await res.json();
+
+document.getElementById("result").innerHTML =
+`📊 Score: <b>${data.predicted_marks}%</b><br>⚡ ${data.performance}`;
+
+}catch(e){
+document.getElementById("result").innerHTML = "Error in API";
+}
+
+}
+
 </script>
 
 </body>

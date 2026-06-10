@@ -225,3 +225,1542 @@ body{
 
     opacity:0.9;
 }
+      /* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+    padding:0 8%;
+    margin-top:30px;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    backdrop-filter:blur(18px);
+    padding:22px;
+    border-radius:22px;
+    cursor:pointer;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:white;
+    opacity:0.08;
+    filter:blur(40px);
+    top:-30px;
+    right:-30px;
+}
+
+.card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+.card h2{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-size:13px;
+    opacity:0.9;
+    line-height:1.5;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 12px;
+    border-radius:999px;
+    background:rgba(0,0,0,0.3);
+    font-size:12px;
+    transition:0.3s;
+}
+
+.card:hover .badge{
+    transform:scale(1.08);
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:none;
+    cursor:pointer;
+    border-radius:14px;
+    padding:14px 24px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.primary-btn{
+    background:white;
+    color:black;
+}
+
+.secondary-btn{
+    background:rgba(255,255,255,0.15);
+    color:white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+    font-size:12px;
+    opacity:0.8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .topbar{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+
+</style>
+</head>
+      <body>
+
+<!-- PARTICLES -->
+
+<div class="particles">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <div class="logo">
+        🚀 ExamPanic AI
+    </div>
+
+    <div class="tag">
+        SaaS EdTech Platform
+    </div>
+
+</div>
+
+
+<!-- HERO SECTION -->
+
+<div class="hero">
+
+    <h1>
+        Welcome to
+        <span>AI Learning System</span>
+        ⚡
+    </h1>
+
+    <p>
+        Learn • Practice • Test • Predict
+        <br>
+        All in one platform
+    </p>
+
+    <div class="hero-buttons">
+
+        <button class="primary-btn"
+                onclick="scrollToSection('features')">
+
+            Explore Features
+
+        </button>
+
+        <button class="secondary-btn"
+                onclick="showToast('🎥 Demo Coming Soon!')">
+
+            Watch Demo
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SEARCH BAR -->
+
+<div style="
+padding:20px 8%;
+display:flex;
+justify-content:center;
+">
+
+    <input
+        type="text"
+        id="featureSearch"
+        placeholder="🔍 Search Features..."
+        onkeyup="searchCards()"
+
+        style="
+        width:350px;
+        max-width:100%;
+        padding:14px;
+        border:none;
+        border-radius:12px;
+        outline:none;
+        "
+    >
+
+</div>
+
+
+<!-- STATS -->
+
+<div id="stats"
+     style="
+     padding:0 8%;
+     display:grid;
+     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+     gap:20px;
+     ">
+
+    <div class="card">
+
+        <h2 class="stat-number"
+            data-target="10000">
+
+            0
+
+        </h2>
+
+        <p>
+            Students Helped
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2 class="stat-number"
+            data-target="50000">
+
+            0
+
+        </h2>
+
+        <p>
+            Questions Solved
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2 class="stat-number"
+            data-target="95">
+
+            0
+
+        </h2>
+
+        <p>
+            Success Rate %
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2 class="stat-number"
+            data-target="24">
+
+            0
+
+        </h2>
+
+        <p>
+            AI Support Hours
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="grid"
+     id="features">
+      <!-- ORIGINAL EXAMPANIC CARDS -->
+
+<div class="card"
+     onclick="openLink('https://learnlession.santoshkrsbg36.workers.dev/')">
+
+    <h2>📘 Learn AI Teacher</h2>
+
+    <p>
+        Deep concept explanation like a real teacher.
+    </p>
+
+    <div class="badge">
+        Start Learning
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://studentnotes.santoshkrsbg36.workers.dev/')">
+
+    <h2>📝 Notes Generator</h2>
+
+    <p>
+        Detailed ICSE revision notes instantly.
+    </p>
+
+    <div class="badge">
+        Generate Notes
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://chatstudent.santoshkrsbg36.workers.dev/')">
+
+    <h2>💬 AI Chat Tutor</h2>
+
+    <p>
+        Ask doubts anytime, get instant answers.
+    </p>
+
+    <div class="badge">
+        24×7 Chat
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://shrill-grass-28d6.santoshkrsbg36.workers.dev/')">
+
+    <h2>🧠 MCQ Test Engine</h2>
+
+    <p>
+        Auto test + instant evaluation system.
+    </p>
+
+    <div class="badge">
+        Test Yourself
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://studentscoreprediction.santoshkrsbg36.workers.dev/')">
+
+    <h2>🎯 ML Prediction</h2>
+
+    <p>
+        Predict exam performance using AI model.
+    </p>
+
+    <div class="badge">
+        AI Analytics
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://stydentnumericalproblem.santoshkrsbg36.workers.dev/')">
+
+    <h2>📊 Numerical Problem Solver</h2>
+
+    <p>
+        Solve physics & math numericals step-by-step
+        with AI reasoning.
+    </p>
+
+    <div class="badge">
+        Solve Now
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://spontaneous-froyo-5ff131.netlify.app/')">
+
+    <h2>🧠 Weakness Analyzer</h2>
+
+    <p>
+        Identify weak concepts, get revision plans,
+        practice questions and improvement roadmap.
+    </p>
+
+    <div class="badge">
+        Smart Analysis
+    </div>
+
+</div>
+      <!-- PREMIUM EXAMPANIC MODULES -->
+
+<div class="card"
+     onclick="openLink('https://flashcards.exampanic.ai/')">
+
+    <h2>🃏 AI Flashcards</h2>
+
+    <p>
+        Generate smart flashcards instantly from any topic
+        and revise using active recall techniques.
+    </p>
+
+    <div class="badge">
+        Revise Faster
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://planner.exampanic.ai/')">
+
+    <h2>📅 Study Planner</h2>
+
+    <p>
+        Create personalized study schedules based on
+        exam dates and daily goals.
+    </p>
+
+    <div class="badge">
+        Plan Smart
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://pyq.exampanic.ai/')">
+
+    <h2>📚 Previous Year Questions</h2>
+
+    <p>
+        Practice chapter-wise PYQs with detailed solutions.
+    </p>
+
+    <div class="badge">
+        Practice PYQs
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://streak.exampanic.ai/')">
+
+    <h2>🔥 Daily Study Streak</h2>
+
+    <p>
+        Build consistency and track your daily study habits.
+    </p>
+
+    <div class="badge">
+        Stay Consistent
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://quizbattle.exampanic.ai/')">
+
+    <h2>⚔️ Quiz Battle Arena</h2>
+
+    <p>
+        Compete with friends in real-time quizzes and
+        climb the leaderboard.
+    </p>
+
+    <div class="badge">
+        Challenge Others
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://careerguide.exampanic.ai/')">
+
+    <h2>🎓 Career Guidance AI</h2>
+
+    <p>
+        Explore future career paths based on your strengths.
+    </p>
+
+    <div class="badge">
+        Future Ready
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://motivation.exampanic.ai/')">
+
+    <h2>🌟 Motivation Hub</h2>
+
+    <p>
+        Get daily motivation, productivity tips and
+        exam inspiration.
+    </p>
+
+    <div class="badge">
+        Stay Inspired
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://doubtforum.exampanic.ai/')">
+
+    <h2>❓ Doubt Discussion Forum</h2>
+
+    <p>
+        Ask doubts, discuss concepts and learn with peers.
+    </p>
+
+    <div class="badge">
+        Ask & Learn
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://mocktests.exampanic.ai/')">
+
+    <h2>📝 Full-Length Mock Tests</h2>
+
+    <p>
+        Attempt exam-style mock tests with instant analytics.
+    </p>
+
+    <div class="badge">
+        Attempt Tests
+    </div>
+
+</div>
+
+
+<div class="card"
+     onclick="openLink('https://certificates.exampanic.ai/')">
+
+    <h2>🏅 Achievement Certificates</h2>
+
+    <p>
+        Earn certificates and badges as you complete milestones.
+    </p>
+
+    <div class="badge">
+        Get Rewarded
+    </div>
+
+</div>
+
+
+</div>
+<!-- END OF GRID -->
+            <!-- ========================= -->
+<!-- PROGRESS OVERVIEW -->
+<!-- ========================= -->
+
+<section class="progress-overview">
+
+    <div class="section-title">
+
+        <h2>📊 Progress Overview</h2>
+
+        <p>
+            Track your learning journey at a glance.
+        </p>
+
+    </div>
+
+
+    <div class="progress-grid">
+
+        <div class="progress-card">
+
+            <h3>📘 Learning Completion</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     style="width:72%;">
+
+                    72%
+
+                </div>
+
+            </div>
+
+            <p>
+                12 of 17 chapters completed.
+            </p>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <h3>📝 Test Performance</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     style="width:88%;">
+
+                    88%
+
+                </div>
+
+            </div>
+
+            <p>
+                Average score across recent tests.
+            </p>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <h3>🔥 Weekly Consistency</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     style="width:64%;">
+
+                    64%
+
+                </div>
+
+            </div>
+
+            <p>
+                Study sessions completed this week.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- LEADERBOARD -->
+<!-- ========================= -->
+
+<section class="leaderboard">
+
+    <div class="section-title">
+
+        <h2>🏆 Top Learners</h2>
+
+        <p>
+            Students leading the ExamPanic community.
+        </p>
+
+    </div>
+
+
+    <div class="leaderboard-table">
+
+        <div class="leaderboard-row top">
+
+            <span>🥇 Aarav</span>
+
+            <span>9850 XP</span>
+
+        </div>
+
+
+        <div class="leaderboard-row">
+
+            <span>🥈 Siya</span>
+
+            <span>9420 XP</span>
+
+        </div>
+
+
+        <div class="leaderboard-row">
+
+            <span>🥉 Rohan</span>
+
+            <span>9180 XP</span>
+
+        </div>
+
+
+        <div class="leaderboard-row">
+
+            <span>⭐ You</span>
+
+            <span>8500 XP</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- RECENT ACTIVITY -->
+<!-- ========================= -->
+
+<section class="activity-section">
+
+    <div class="section-title">
+
+        <h2>📈 Recent Activity</h2>
+
+        <p>
+            See what's happening in your learning journey.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            ✅ Completed AI Teacher Session
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            📝 Scored 92% in Mock Test
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            🔥 Maintained 7-Day Study Streak
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            📚 Generated New Revision Notes
+
+        </div>
+
+    </div>
+
+</section>
+            /* SECTION TITLES */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.section-title h2{
+
+    font-size:34px;
+}
+
+.section-title p{
+
+    opacity:0.85;
+}
+
+
+/* SECTION SPACING */
+
+.progress-overview,
+.leaderboard,
+.activity-section{
+
+    padding:60px 8%;
+}
+
+
+/* PROGRESS */
+
+.progress-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+}
+
+.progress-card{
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(18px);
+
+    padding:25px;
+
+    border-radius:22px;
+}
+
+.progress-bar{
+
+    height:20px;
+
+    background:rgba(255,255,255,0.12);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    margin:15px 0;
+}
+
+.progress-fill{
+
+    height:100%;
+
+    background:rgba(255,255,255,0.8);
+
+    color:black;
+
+    font-weight:600;
+
+    text-align:center;
+
+    line-height:20px;
+}
+
+
+/* LEADERBOARD */
+
+.leaderboard-table{
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.leaderboard-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:18px 24px;
+
+    margin-bottom:14px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(18px);
+}
+
+.top{
+
+    font-weight:700;
+}
+
+
+/* TIMELINE */
+
+.timeline{
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.timeline-item{
+
+    margin-bottom:18px;
+
+    padding:18px 24px;
+
+    border-left:4px solid rgba(255,255,255,0.6);
+
+    background:rgba(255,255,255,0.10);
+
+    border-radius:14px;
+}
+            <!-- ========================= -->
+<!-- TESTIMONIALS -->
+<!-- ========================= -->
+
+<section class="testimonials">
+
+    <div class="section-title">
+
+        <h2>💬 Student Testimonials</h2>
+
+        <p>
+            What learners say about ExamPanic AI.
+        </p>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <p>
+                "ExamPanic made difficult concepts easy.
+                My confidence improved tremendously!"
+            </p>
+
+            <h4>— Ananya, Class 10</h4>
+
+        </div>
+
+
+        <div class="testimonial-card">
+
+            <p>
+                "The mock tests and notes generator saved
+                me hours of preparation."
+            </p>
+
+            <h4>— Arjun, ICSE Student</h4>
+
+        </div>
+
+
+        <div class="testimonial-card">
+
+            <p>
+                "The AI tutor feels like having a teacher
+                available 24×7."
+            </p>
+
+            <h4>— Meera, Class 9</h4>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FAQ -->
+<!-- ========================= -->
+
+<section class="faq-section">
+
+    <div class="section-title">
+
+        <h2>❓ Frequently Asked Questions</h2>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Is ExamPanic free to use?
+
+        </button>
+
+        <div class="faq-answer">
+
+            Yes. Several features are free,
+            while advanced tools may be premium.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Can I access ExamPanic on mobile?
+
+        </button>
+
+        <div class="faq-answer">
+
+            Yes, the dashboard is fully responsive.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Are my results stored securely?
+
+        </button>
+
+        <div class="faq-answer">
+
+            Student data should always be protected
+            using secure practices.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- NEWSLETTER -->
+<!-- ========================= -->
+
+<section class="newsletter-section">
+
+    <div class="newsletter-box">
+
+        <h2>📩 Stay Updated</h2>
+
+        <p>
+
+            Get study tips, updates and exam strategies
+            directly from ExamPanic AI.
+
+        </p>
+
+        <div class="newsletter-form">
+
+            <input
+                type="email"
+                id="newsletterEmail"
+                placeholder="Enter your email"
+            >
+
+            <button onclick="subscribeNewsletter()">
+
+                Subscribe
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast">
+
+    🎉 Welcome to ExamPanic AI!
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>🚀 ExamPanic AI</h3>
+
+            <p>
+
+                Learn • Practice • Test • Predict • Improve
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#features">
+
+                Features
+
+            </a>
+
+            <a href="#stats">
+
+                Analytics
+
+            </a>
+
+            <a href="#">
+
+                Privacy Policy
+
+            </a>
+
+            <a href="#">
+
+                Terms of Service
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        Made with ❤️ • ExamPanic AI SaaS EdTech System
+
+    </div>
+
+</footer>
+            /* TESTIMONIALS */
+
+.testimonials,
+.faq-section,
+.newsletter-section{
+
+    padding:60px 8%;
+}
+
+.testimonial-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.testimonial-card{
+
+    background:rgba(255,255,255,0.12);
+
+    padding:25px;
+
+    border-radius:22px;
+
+    backdrop-filter:blur(18px);
+}
+
+.testimonial-card h4{
+
+    margin-top:18px;
+}
+
+
+/* FAQ */
+
+.faq-item{
+
+    max-width:800px;
+
+    margin:0 auto 20px;
+}
+
+.faq-question{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    background:rgba(255,255,255,0.15);
+
+    color:white;
+}
+
+.faq-answer{
+
+    display:none;
+
+    padding:18px;
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:0 0 16px 16px;
+}
+
+.faq-item.active .faq-answer{
+
+    display:block;
+}
+
+
+/* NEWSLETTER */
+
+.newsletter-box{
+
+    max-width:800px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,0.12);
+
+    padding:40px;
+
+    border-radius:28px;
+
+    backdrop-filter:blur(18px);
+
+    text-align:center;
+}
+
+.newsletter-form{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.newsletter-form input{
+
+    width:350px;
+
+    max-width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    outline:none;
+}
+
+.newsletter-form button{
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+}
+
+
+/* FOOTER */
+
+footer{
+
+    background:rgba(0,0,0,0.20);
+
+    padding:40px 8%;
+
+    margin-top:30px;
+}
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+}
+
+.footer-links{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+
+    color:white;
+
+    text-decoration:none;
+}
+
+.footer-bottom{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    opacity:0.75;
+}
+
+
+/* TOAST */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    background:rgba(0,0,0,0.75);
+
+    padding:15px 20px;
+
+    border-radius:14px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:0.4s;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+            <script>
+
+/* OPEN LINKS */
+
+function openLink(url){
+
+    window.open(url, "_blank");
+
+}
+
+
+/* SMOOTH SCROLL */
+
+function scrollToSection(id){
+
+    const section =
+        document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+}
+
+
+/* FEATURE SEARCH */
+
+function searchCards(){
+
+    const input =
+        document.getElementById("featureSearch")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+
+        const text =
+            card.innerText.toLowerCase();
+
+        card.style.display =
+            text.includes(input)
+            ? "block"
+            : "none";
+
+    });
+
+}
+
+
+/* ANIMATED STATS COUNTER */
+
+function animateCounters(){
+
+    const counters =
+        document.querySelectorAll(".stat-number");
+
+    counters.forEach(counter=>{
+
+        const target =
+            Number(counter.dataset.target);
+
+        let count = 0;
+
+        const increment =
+            Math.ceil(target/100);
+
+        const interval = setInterval(()=>{
+
+            count += increment;
+
+            if(count >= target){
+
+                count = target;
+
+                clearInterval(interval);
+
+            }
+
+            counter.innerText = count;
+
+        },20);
+
+    });
+
+}
+
+
+/* TOAST */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },3000);
+
+}
+
+
+/* NEWSLETTER */
+
+function subscribeNewsletter(){
+
+    const email =
+        document.getElementById("newsletterEmail");
+
+    if(email.value.trim()===""){
+
+        showToast("⚠️ Please enter your email.");
+
+        return;
+
+    }
+
+    showToast("🎉 Subscribed Successfully!");
+
+    email.value = "";
+
+}
+
+
+/* FAQ ACCORDION */
+
+document.querySelectorAll(".faq-question")
+
+.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        button.parentElement
+              .classList
+              .toggle("active");
+
+    });
+
+});
+
+
+/* PAGE LOAD */
+
+window.addEventListener("load",()=>{
+
+    animateCounters();
+
+    showToast("🚀 Welcome to ExamPanic AI");
+
+});
+
+</script>
+
+
+</body>
+</html>
